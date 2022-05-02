@@ -1,0 +1,66 @@
+<div class="content-wrapper">
+  <!--START CONTENT HEADER -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Factures</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Factures</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--END CONTENT HEADER -->
+  <section class="content">
+    <div class="container-fluid">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Id Facture</th>
+            <th>Nom de client</th>
+            <th>Telephone</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let bill of bills">
+          <tr>
+            <td>
+              {{ bill.billId }}
+            </td>
+            <td>
+              {{ bill.order.customers.firstName }}
+              {{ bill.order.customers.lastName }}
+            </td>
+            <td>
+              {{ bill.order.customers.phoneNumber }}
+            </td>
+            <td>
+              {{ bill.order.totalPrice }} TND
+            </td>
+            <td>
+              {{ bill.order.totalQuantity }}
+            </td>
+            <td>
+              {{ bill.created_at | date: "medium" }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- if bills empty then display a message -->
+      <div
+        *ngIf="bills?.length == 0"
+        class="alert alert-warning col-md-12"
+        role="alert"
+      >
+        No Bills found .
+      </div>
+    </div>
+  </section>
+</div>

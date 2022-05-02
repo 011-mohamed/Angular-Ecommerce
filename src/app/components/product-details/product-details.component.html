@@ -1,0 +1,87 @@
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Details </h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Details</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card card-solid">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-sm-6">
+              
+              <div class="col-12">
+                <img src="{{product.image}}" class="product-image" alt="Product Image">
+              </div>
+              <div class="col-12 product-image-thumbs">
+                <div class="product-image-thumb active"><img src="{{product.image}}" alt="Product Image"></div>
+                <div class="product-image-thumb" ><img src="{{product.image}}" alt="Product Image"></div>
+              </div>
+            </div>
+            <div class="col-12 col-sm-6">
+              <h3 class="my-3">{{product.name}}</h3>
+              <p>{{product.description}}</p>
+
+              <hr>
+              <div class="bg-white p-3 mb-2 py-2 px-3 mt-4">
+                <h2 class="mb-0">
+                  {{product.unitPrice}} TND
+                </h2>
+                <h4 class="mt-0">
+                  <small>In Stock : <span ><b> {{product.unitStock}}</b> </span> </small>
+                </h4>
+              </div>
+
+              <div class="mt-4">
+                <div class="input-group input-group-lg mt-2">
+                  <input #myInput
+                    class="form-control form-control-navbar"
+                    type="text"
+                    placeholder="quantity ..."
+                    aria-label="Search" />
+                  <div class="input-group-append">
+                  <button (click)="cartResolved(product,myInput.value)" class="btn btn-success">Add To Cart</button>
+                  </div>
+                  <div *ngIf="quantitySuff(product,myInput.value)"
+                    class="alert alert-warning col-md-12 mt-2 "
+                    role="alert">
+                    <p><span style="font-weight: bold"> IN STOCK :</span> {{product.unitStock}} </p>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          <div class="row mt-4">
+            <nav class="w-100">
+              <div class="nav nav-tabs" id="product-tab" role="tablist">
+                <a class="nav-item nav-link active" id="product-desc-tab" data-toggle="tab" href="#product-desc" role="tab" aria-controls="product-desc" aria-selected="true" routerLink="/products">Back To product List</a>
+              </div>
+            </nav>
+            
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->

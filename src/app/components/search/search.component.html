@@ -1,0 +1,20 @@
+<form class="form-inline">
+  <div class="input-group input-group-sm">
+    <input #myInput
+      class="form-control form-control-navbar"
+      type="text"
+      placeholder="Search for products"
+      aria-label="Search"
+      (keyup.enter)="doSearch(myInput.value)"
+    />
+
+    <div class="input-group-append">
+      <button (click)="doSearch(myInput.value)"class="btn btn-navbar" >
+        <i class="fas fa-search"></i>
+      </button>
+      <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,18 @@
+<li class="nav-item dropdown">
+  <a class="nav-link" data-toggle="dropdown" href="#">
+    <i class="fas fa-cart-plus fa-lg"></i>
+    <span class="badge badge-warning navbar-badge">{{totalQuantity}}</span>
+  </a>
+  <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+    <span class="dropdown-item dropdown-header">{{totalPrice | currency : 'TND'}}</span>
+    <div class="dropdown-divider"></div>
+    <div *ngFor="let tempItem of cartItems">
+      <a routerLink="/products/{{tempItem.id}}" class="dropdown-item">
+        <i class="fas fa-check mr-2"></i>{{tempItem.name}}
+        <span class="float-right text-muted text-sm">{{tempItem.quantity}}</span>
+      </a>
+      <div class="dropdown-divider"></div>
+    </div>
+    <a routerLink="/cart-details" class="dropdown-item dropdown-footer">Details</a>
+  </div>
+</li>

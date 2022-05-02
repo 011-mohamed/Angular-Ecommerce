@@ -1,0 +1,89 @@
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Modifer Produit</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Product</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /.container-fluid -->
+  <section class="content">
+    <div class="container-fluid">
+      <div class="row mt-4">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+          <div class="card card-success align-content-center">
+            <div class="card-header">
+              <h3 class="card-title">Modfier <small> Produit</small></h3>
+            </div>
+
+            <form [formGroup] = "updateFormGroup" (ngSubmit)="onSubmit()">
+              <div formGroupName="updateProduct" class="card-body" >
+                <div class="form-group">
+                  <label>Nom</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="currentProduct.name"
+                    formControlName="name"/>
+                </div>
+                <div class="form-group">
+                  <label>Prix</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    [(ngModel)]="currentProduct.unitPrice"
+                    formControlName="unitPrice"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Quantité</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    [(ngModel)]="currentProduct.unitStock"
+                    formControlName="unitStock"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>Category</label>
+                  <br />
+                  <select class="form-control" formControlName="categorie" [(ngModel)]="currentProduct.category">
+                    <option *ngFor="let cat of categories" [ngValue]="cat.id">
+                      {{ cat.name }}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputFile">File input</label>
+                  <div class="custom-file">
+                    <input
+                      type="file"
+                      class="custom-file-input"
+                      id="exampleInputFile"
+                      (change)="onChange($event)"
+                    />
+                    <label class="custom-file-label" for="exampleInputFile">choisir votre fichier ..</label>
+                      
+                  </div>
+                </div>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-success">Modifier produit </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

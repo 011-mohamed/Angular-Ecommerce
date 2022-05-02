@@ -1,0 +1,19 @@
+<!-- category -->
+<li class="nav-item menu-open">
+  <a href="#" class="nav-link active">
+    <i class="nav-icon fas fa-copy"></i>
+    <p>
+      Category
+      <i class="fas fa-angle-left right"></i>
+    </p>
+  </a>
+  <ul class="nav nav-treeview">
+    <li *ngFor="let tempCat of productCategories" class="nav-item">
+      <a routerLink="/category/{{tempCat.id}}" class="nav-link">
+        <i class="far fa-circle nav-icon"></i>
+        <p>{{tempCat.name}}</p>
+      </a>
+    </li>
+    
+  </ul>
+</li>

@@ -1,0 +1,55 @@
+<div class="content-wrapper">
+    <!--START CONTENT HEADER -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Categories</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Categories</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--END CONTENT HEADER -->
+    <section class="content">
+      <div class="container-fluid">
+        <table class="table table-striped">
+            <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+          <tbody *ngFor="let cat of categories" >
+                <tr>
+                    <td>
+                        {{ cat.name }}
+                    </td>
+                    <td>
+                        {{cat.description }} TND
+                    </td>
+                    <td>
+                      <button class="btn btn-success m-2" [routerLink]="['/update-category',cat.id]" >Edit</button>
+                      <button type="button"  (click)="deleteCategory(cat)" class="btn btn-danger">Delete</button>
+                    </td>
+                </tr>
+          </tbody>
+        </table>
+          <!-- if categories empty then display a message -->
+          <div
+            *ngIf="categories?.length == 0"
+            class="alert alert-warning col-md-12"
+            role="alert"
+          >
+            No Categories found .
+          </div>
+        </div>
+    </section>
+  </div>
+  

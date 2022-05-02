@@ -1,0 +1,63 @@
+<div class="content-wrapper">
+    <!--START CONTENT HEADER -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Customers</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Customers</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--END CONTENT HEADER -->
+    <section class="content">
+      <div class="container-fluid">
+        <table class="table table-striped">
+            <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Number</th>
+            <th>Company</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+          <tbody *ngFor="let customer of customers" >
+                <tr>
+                    <td>
+                        {{ customer.firstName}}
+                    </td>
+                    <td>
+                        {{ customer.lastName }}
+                    </td>
+                    <td>
+                        {{ customer.phoneNumber }}
+                    </td>
+                    <td>
+                        {{ customer.company }}
+                    </td>
+                    <td>
+                      <button class="btn btn-success m-2" [routerLink]="['/update-customer',customer.id]" >Edit</button>
+                      <button type="button" (click)="deleteCustomer(customer)" class="btn btn-danger ">Delete</button>
+                    </td>
+                </tr>
+          </tbody>
+        </table>
+          <!-- if customers empty then display a message -->
+          <div
+            *ngIf="customers?.length == 0"
+            class="alert alert-warning col-md-12"
+            role="alert"
+          >
+            No customers found .
+          </div>
+        </div>
+    </section>
+  </div>
+  
