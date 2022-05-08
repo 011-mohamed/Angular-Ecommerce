@@ -1,3 +1,4 @@
+import { Customer } from 'src/app/common/customer';
 import { Purchase } from './../../common/purchase';
 import { OrderItem } from './../../common/order-item';
 import { Router } from '@angular/router';
@@ -7,6 +8,8 @@ import { ShopShopValidators } from './../../validators/shop-shop-validators';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Order } from 'src/app/common/order';
+import { CustomerService } from 'src/app/services/customer.service';
+import { isNull } from '@angular/compiler/src/output/output_ast';
 
 
 @Component({
@@ -15,46 +18,68 @@ import { Order } from 'src/app/common/order';
   styleUrls: ['./checkout.component.css']
 })
 export class CheckoutComponent implements OnInit {
-
-
+  customerTel : number    ;
   checkoutFormGroup: FormGroup ;
+  customers : Customer[];
   totalPrice : number = 0 ;
   totalQuantity : number = 0 ;
   orderTrackingNumber : any = 0 ;
+  custmerFromDB: Customer = new Customer() ;
   constructor(private formBuilder:FormBuilder,
               private cartService: CartService,
               private checkoutService:CheckoutService,
+              private customerService : CustomerService,
               private router:Router) { }
 
   ngOnInit(): void {
+    this.customerService.getCustomerList().subscribe(
+      data => {
+        this.customers = data ;
+      }
+    );
+      
 
     this.reviewCartDetails();
     this.checkoutFormGroup = this.formBuilder.group({
       customer : this.formBuilder.group({
-        firstName :new FormControl('',[Validators.required,
+        firstName :new FormControl('',[
                                         Validators.minLength(2),
+                                        Validators.pattern('[a-zA-Z]*'),
                                         ShopShopValidators.notOnlyWhitespace]),
-        lastName:new FormControl('',[Validators.required,
+        lastName:new FormControl('',[
                                   Validators.minLength(2),
+                                  Validators.pattern('[a-zA-Z]*'),
                                   ShopShopValidators.notOnlyWhitespace]),
-        phoneNumber:new FormControl('',[Validators.required,
+        phoneNumber:new FormControl('',[
                                     Validators.pattern('[0-9]{8}'),
                                     ShopShopValidators.notOnlyWhitespace]),
-        company:new FormControl('',[Validators.required,
+        company:new FormControl('',[
                                     Validators.minLength(2),
                                     ShopShopValidators.notOnlyWhitespace])  
       })
     });
+    
+  }
+
+  async onChange(){
+      
+        this.customerService.getCustomerByPhoneNumber(this.customerTel).subscribe(
+          response =>{
+            this.custmerFromDB  =  response;
+          }
+        );
+        console.log(`customer Phone Number : ${this.customerTel}`);
+        console.log(this.custmerFromDB.firstName);
+      
+      
   }
   reviewCartDetails() {
     this.cartService.totalPrice.subscribe(
       totalPrice => this.totalPrice = totalPrice 
     );
-    
     this.cartService.totalQuantity.subscribe(
       totalQuantity => this.totalQuantity = totalQuantity 
     );
-    
   }
 
   get firstName(){return this.checkoutFormGroup.get('customer.firstName'); }
@@ -64,12 +89,8 @@ export class CheckoutComponent implements OnInit {
   
   onSubmit(){
     console.log("handling the submit button :");
-    console.log(this.checkoutFormGroup.get('customer').value) ; 
+    console.log(this.checkoutFormGroup.get('customer').value) ;
     
-    if(this.checkoutFormGroup.invalid){
-      this.checkoutFormGroup.markAllAsTouched();
-      return ;
-    }
     // set up order 
     let order = new Order();
     order.totalPrice = this.totalPrice;
@@ -83,12 +104,17 @@ export class CheckoutComponent implements OnInit {
     // set up purchase 
     let purchase = new Purchase();
     // populate purchase 
-    purchase.customer = this.checkoutFormGroup.controls['customer'].value;
+    if(this.customerTel == null){
+      purchase.customer = this.checkoutFormGroup.controls['customer'].value;
+    }else{
+      purchase.customer = this.custmerFromDB ;
+    }
+    console.log(this.custmerFromDB.firstName);
     purchase.order = order ;
     purchase.orderItems = orderItems;
 
-
     console.log(`purchase : ${purchase.customer.firstName} +  ${purchase.order.totalPrice} }`);
+    
     // call REST Api via checkout service 
     this.checkoutService.placeOrder(purchase).subscribe(
       {

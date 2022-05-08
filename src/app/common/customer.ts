@@ -5,4 +5,9 @@ export class Customer {
     lastName : string ;
     phoneNumber : number ;
     company : string ;
+
+    
+    
+    
+    
 }

@@ -18,41 +18,71 @@
   <!--END CONTENT HEADER -->
   <section class="content">
     <div class="container-fluid">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Id Facture</th>
-            <th>Nom de client</th>
-            <th>Telephone</th>
-            <th>Prix</th>
-            <th>Quantité</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let bill of bills">
-          <tr>
-            <td>
-              {{ bill.billId }}
-            </td>
-            <td>
-              {{ bill.order.customers.firstName }}
-              {{ bill.order.customers.lastName }}
-            </td>
-            <td>
-              {{ bill.order.customers.phoneNumber }}
-            </td>
-            <td>
-              {{ bill.order.totalPrice }} TND
-            </td>
-            <td>
-              {{ bill.order.totalQuantity }}
-            </td>
-            <td>
-              {{ bill.created_at | date: "medium" }}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Liste des Factures</h3>
+          <div class="card-tools">
+            <div class="input-group input-group-sm" style="width: 150px">
+              <input #myInput
+                type="text"
+                name="table_search"
+                class="form-control float-right"
+                placeholder="Search"
+                (keyup.enter)="doSearch(myInput.value)"
+              />
+              <div class="input-group-append">
+                <button (click)="doSearch(myInput.value)" class="btn btn-default">
+                  <i class="fas fa-search"></i>
+                </button>
+                <button (click)="doSortDEC()" class="btn btn-default">
+                  <i class="fas fa-sort-down"></i>
+                </button>
+                <button (click)="doSortCR()" class="btn btn-default">
+                  <i class="fas fa-sort-up"></i>
+                </button>
+              </div>
+              
+            </div>
+
+          </div>
+        </div>
+        <div class="card-body table-responsive p-0">
+          <table class="table table-hover text-nowrap">
+            <thead>
+              <tr>
+                <th>Id Facture</th>
+                <th>Nom de client</th>
+                <th>Telephone</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Date </th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let bill of bills">
+              <tr>
+                <td>
+                  {{ bill.billId }}
+                </td>
+                <td>
+                  {{ bill.order.customers.firstName }}
+                  {{ bill.order.customers.lastName }}
+                </td>
+                <td>
+                  {{ bill.order.customers.phoneNumber }}
+                </td>
+                <td>{{ bill.order.totalPrice }} TND</td>
+                <td>
+                  {{ bill.order.totalQuantity }}
+                </td>
+                <td>
+                  {{ bill.created_at | date: "medium" }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
       <!-- if bills empty then display a message -->
       <div
         *ngIf="bills?.length == 0"

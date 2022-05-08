@@ -25,4 +25,9 @@ export class CustomerService {
     const url = `${this.customerUrl}/delete/${id}`;
     return this.httpClient.delete(url);
   }
+
+  getCustomerByPhoneNumber(tel: number): Observable<Customer>{
+    const url = `${this.customerUrl}/filtred/${tel}`;
+    return this.httpClient.get<Customer>(url);
+  }
 }

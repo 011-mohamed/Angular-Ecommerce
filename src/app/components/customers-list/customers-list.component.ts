@@ -31,7 +31,7 @@ export class CustomersListComponent implements OnInit {
          this.customers = data ;
        }
      )
-    }
+  }
     deleteCustomer(customer: Customer) {
 
       let conf = confirm('Etes-vous sûr de supprimer '+customer.firstName+' ?');

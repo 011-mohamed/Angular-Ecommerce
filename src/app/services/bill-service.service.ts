@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class BillServiceService {
   
   private purchaseUrl = 'http://127.0.0.1:8000/api/bills/create/'
-  private billseUrl = 'http://127.0.0.1:8000/api/bills/'
+  private billseUrl = 'http://127.0.0.1:8000/api/bills'
 
   constructor(private httpClient : HttpClient) { }
 
@@ -20,4 +20,27 @@ export class BillServiceService {
   getBillsList(): Observable<Bill[]>{
     return this.httpClient.get<Bill[]>(this.billseUrl);
   }
+
+  searchBillsByName(theKeyword: string): Observable<Bill[]> {
+
+    // need to build URL base name keyword
+    const searchUrl= `${this.billseUrl}/search/${theKeyword}`;
+     
+   return this.httpClient.get<Bill[]>(searchUrl);
+ }
+
+  searchBillsByPhoneNumber(theKeyword: Number): Observable<Bill[]> {
+
+  // need to build URL base name keyword
+  const searchUrl= `${this.billseUrl}/searchByPhone/${theKeyword}`;
+   
+  return this.httpClient.get<Bill[]>(searchUrl);
+  
+  }
+
+  getBillsListSorted(): Observable<Bill[]>{
+    const sortBills=`${this.billseUrl}/order`
+    return this.httpClient.get<Bill[]>(sortBills);
+  }
+
 }

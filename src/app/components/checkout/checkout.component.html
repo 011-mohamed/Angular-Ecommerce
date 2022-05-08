@@ -19,15 +19,12 @@
   <section class="content">
     <div class="container-fluid">
       <div class="row mt-4">
-        <div class="col-md-2"></div>  
+        <div class="col-md-2"></div>
         <div class="col-md-4">
           <div class="card card-success align-content-center">
             <div class="card-header">
-              <h3 class="card-title">
-                Receipt <small>Check</small>
-              </h3>
+              <h3 class="card-title">Nouveau <small>Client</small></h3>
             </div>
-
             <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
               <div formGroupName="customer" class="card-body">
                 <div class="form-group">
@@ -36,65 +33,114 @@
                     type="text"
                     formControlName="firstName"
                     class="form-control"
-                    placeholder="Enter Your first name ... " />
-                  <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger mt-1">
-                  <div *ngIf="firstName.errors.required || firstName.errors.notOnlyWhitespace">
-                      First Name is required 
+                    placeholder="Enter Your first name ... "
+                  />
+                  <div
+                    *ngIf="
+                      firstName.invalid &&
+                      (firstName.dirty || firstName.touched)
+                    "
+                    class="alert alert-danger mt-1"
+                  >
+                    <div
+                      *ngIf="
+                        firstName.errors.required ||
+                        firstName.errors.notOnlyWhitespace
+                      "
+                    >
+                      First Name is required
                     </div>
                     <div *ngIf="firstName.errors.minlength">
-                      First Name must be at least 2 characters long 
+                      First Name must be at least 2 characters long
+                    </div>
+                    <div *ngIf="firstName.errors.pattern">
+                      First Name must be characters only
                     </div>
                   </div>
                 </div>
-              
-                <div  class="form-group">
+
+                <div class="form-group">
                   <label for="lastName">Last Name</label>
                   <input
-                      type="text"
-                      formControlName="lastName"
-                      class="form-control"
-                      placeholder="Enter Your last name ... "
-                    />
-                    <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger mt-1">
-                      <div *ngIf="lastName.errors.required || lastName.errors.notOnlyWhitespace">
-                        Last Name is required 
-                      </div>
-                      <div *ngIf="lastName.errors.minlength">
-                        Last Name must be at least 2 characters long 
-                      </div>
-                    </div>
-                </div>
-                <div  class="form-group">
-                  <label for="phoneNumber">Phone Nmber</label>
-                  <input
-                      type="text"
-                      formControlName="phoneNumber"
-                      class="form-control"
-                      placeholder="Enter the phone number ... "
+                    type="text"
+                    formControlName="lastName"
+                    class="form-control"
+                    placeholder="Enter Your last name ... "
                   />
-                  <div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger mt-1">
-                    <div *ngIf="phoneNumber.errors.required || phoneNumber.errors.notOnlyWhitespace">
-                      Phone Number is required 
+                  <div
+                    *ngIf="
+                      lastName.invalid && (lastName.dirty || lastName.touched)
+                    "
+                    class="alert alert-danger mt-1"
+                  >
+                    <div
+                      *ngIf="
+                        lastName.errors.required ||
+                        lastName.errors.notOnlyWhitespace
+                      "
+                    >
+                      Last Name is required
                     </div>
-                    <div *ngIf="phoneNumber.errors.pattern">
-                      must be 8 number Long 
+                    <div *ngIf="lastName.errors.minlength">
+                      Last Name must be at least 2 characters long
+                    </div>
+                    <div *ngIf="lastName.errors.pattern">
+                      Last Name must be characters only
                     </div>
                   </div>
                 </div>
-                <div  class="form-group">
+                <div class="form-group">
+                  <label for="phoneNumber">Phone Nmber</label>
+                  <input
+                    type="text"
+                    formControlName="phoneNumber"
+                    class="form-control"
+                    placeholder="Enter the phone number ... "
+                  />
+                  <div
+                    *ngIf="
+                      phoneNumber.invalid &&
+                      (phoneNumber.dirty || phoneNumber.touched)
+                    "
+                    class="alert alert-danger mt-1"
+                  >
+                    <div
+                      *ngIf="
+                        phoneNumber.errors.required ||
+                        phoneNumber.errors.notOnlyWhitespace
+                      "
+                    >
+                      Phone Number is required
+                    </div>
+                    <div *ngIf="phoneNumber.errors.pattern">
+                      must be 8 number Long
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
                   <label for="company">Company</label>
                   <input
-                      type="text"
-                      formControlName="company"
-                      class="form-control"
-                      placeholder="Enter the company name ..."
+                    type="text"
+                    formControlName="company"
+                    class="form-control"
+                    placeholder="Enter the company name ..."
                   />
-                  <div *ngIf="company.invalid && (company.dirty || company.touched)" class="alert alert-danger mt-1">
-                    <div *ngIf="company.errors.required || company.errors.notOnlyWhitespace">
-                      Company is required 
+                  <div
+                    *ngIf="
+                      company.invalid && (company.dirty || company.touched)
+                    "
+                    class="alert alert-danger mt-1"
+                  >
+                    <div
+                      *ngIf="
+                        company.errors.required ||
+                        company.errors.notOnlyWhitespace
+                      "
+                    >
+                      Company is required
                     </div>
                     <div *ngIf="company.errors.minlength">
-                      company Name must be at least 2 characters long 
+                      company Name must be at least 2 characters long
                     </div>
                   </div>
                 </div>
@@ -107,17 +153,31 @@
             </form>
           </div>
         </div>
-        
+
         <div class="col-md-4">
-          <div class="position-relative p-3 bg-dark" style="height: 120px; width:230px ">
+          <div class="position-relative p-3 bg-dark" style="height: 200px; width: 230px">
             <div class="ribbon-wrapper">
-              <div class="ribbon bg-success">
-                DETAILS
-              </div>
+              <div class="ribbon bg-success">OU</div>
             </div>
-            <span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: bold;"> Total Quantity : {{totalQuantity}} </span> <br />
-            <span style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; font-weight: bold;">Total Price : {{totalPrice}} TND </span><br />
-            
+            <p>Choisir un client existant :</p>
+            <div class="form-group">
+              <select class="form-control" [(ngModel)]="customerTel"  (change)="onChange()">
+                <label >Choisir ... </label>
+                <option [ngValue]="null" >Select Client</option>
+                <option *ngFor="let customer of customers" [ngValue]="customer.phoneNumber" >
+                {{customer.firstName}} {{ customer.lastName}}  - <small>{{ customer.phoneNumber}}</small>
+                </option>
+              </select>
+            </div>
+            <span
+              style=" font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,sans-serif; font-weight: bold;">
+              Total Quantity : {{ totalQuantity }}
+            </span>
+            <br />
+            <span
+              style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,sans-serif;font-weight: bold;">
+              Total Price : {{ totalPrice | currency: "TND" }} </span
+            ><br />
           </div>
         </div>
       </div>
