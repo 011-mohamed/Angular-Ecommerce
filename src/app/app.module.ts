@@ -24,10 +24,12 @@ import { ProductUpdateComponent } from './components/product-update/product-upda
 import { CustomerUpdateComponent } from './components/customer-update/customer-update.component';
 import { CustomersListComponent } from './components/customers-list/customers-list.component';
 import { BillsListComponent } from './components/bills-list/bills-list.component';
+import { ProductAddComponent } from './components/product-add/product-add.component';
 
 
 
 const routes: Routes =[
+  { path: 'product-add', component: ProductAddComponent },
   { path: 'bill', component: BillComponent },
   { path: 'ckeckout', component: CheckoutComponent },
   { path: 'cart-details', component: CartDetailsComponent },
@@ -66,6 +68,7 @@ const routes: Routes =[
     CustomerUpdateComponent,
     CustomersListComponent,
     BillsListComponent,
+    ProductAddComponent,
    
   ],
   imports: [

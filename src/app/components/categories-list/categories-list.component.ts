@@ -27,13 +27,13 @@ export class CategoriesListComponent implements OnInit {
 
   handleListCategories(){
 
-     this.categoryService.getCategoryList().subscribe(
+      this.categoryService.getCategoryList().subscribe(
        data => {
          this.categories = data ;
        }
      )
     }
-    deleteCategory(cat: ProductCategory) {
+  deleteCategory(cat: ProductCategory) {
 
       let conf = confirm('Etes-vous sûr de supprimer '+cat.name+' ?');
       if (conf)

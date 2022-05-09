@@ -66,5 +66,10 @@ export class ProductService {
     return this.httpClient.put<any>(url,formData);
   }
 
+  addProduct(formData: FormData){
+    const url = `${this.baseUrl}/add`;
+    return this.httpClient.post(url,formData);
+  }
+
   
 }

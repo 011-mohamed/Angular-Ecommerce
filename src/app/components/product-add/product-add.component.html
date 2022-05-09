@@ -1,0 +1,141 @@
+<div class="content-wrapper">
+ <!--START CONTENT HEADER -->
+    <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Produit</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Ajouter-Produit</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    </section>
+  <!--END CONTENT HEADER -->
+    <section class="content">
+        <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-md-3"></div>
+            <div class="col-md-5">
+            <div class="card card-success align-content-center">
+                <div class="card-header">
+                <h3 class="card-title">Ajouter <small> Produit</small></h3>
+                </div>
+
+                <form [formGroup] = "addProductFormGroup" (ngSubmit)="onSubmit()">
+                    <div formGroupName="product" class="card-body" >
+                        <div class="form-group">
+                            <label>Nom</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="saisir le nom de votre produit ..."
+                                formControlName="name"/>
+                               
+                            <div *ngIf=" addProductFormGroup.get('product.name').invalid && (addProductFormGroup.get('product.name').dirty ||  addProductFormGroup.get('product.name').touched)"
+                                class="alert alert-danger mt-1"> 
+                                <div *ngIf="  addProductFormGroup.get('product.name').errors.required ||  addProductFormGroup.get('product.name').errors.notOnlyWhitespace">
+                                    Name is required
+                                </div>
+                                <div *ngIf=" addProductFormGroup.get('product.name').errors.minlength">
+                                    Name must be at least 2 characters long
+                                </div>
+                                <div *ngIf=" addProductFormGroup.get('product.name').errors.pattern">
+                                Name must be characters only
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Description de votre produit ..."
+                                formControlName="description"/>
+                            <div *ngIf=" addProductFormGroup.get('product.description').invalid && (addProductFormGroup.get('product.description').dirty ||  addProductFormGroup.get('product.description').touched)"
+                                class="alert alert-danger mt-1"> 
+                                <div *ngIf="  addProductFormGroup.get('product.description').errors.required ||  addProductFormGroup.get('product.description').errors.notOnlyWhitespace">
+                                    description is required
+                                </div>
+                                <div *ngIf=" addProductFormGroup.get('product.description').errors.minlength">
+                                    description must be at least 2 characters long
+                                </div>
+                                <div *ngIf=" addProductFormGroup.get('product.description').errors.pattern">
+                                description must be characters only
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Prix</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Prix de votre produit ..."
+                                formControlName="unitPrice"
+                            />
+                            <div *ngIf=" addProductFormGroup.get('product.unitPrice').invalid && (addProductFormGroup.get('product.unitPrice').dirty ||  addProductFormGroup.get('product.unitPrice').touched)"
+                                class="alert alert-danger mt-1"> 
+                                <div *ngIf="addProductFormGroup.get('product.unitPrice').errors.required ||  addProductFormGroup.get('product.unitPrice').errors.notOnlyWhitespace">
+                                    Price is required
+                                </div>
+                                <div *ngIf=" addProductFormGroup.get('product.unitPrice').errors.pattern">
+                                    Price must be 1 digit befor the point and  3 digits after point !
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Quantité</label>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Quantite de votre produit ..."
+                                formControlName="unitStock"
+                            />
+                            <div *ngIf=" addProductFormGroup.get('product.unitStock').invalid && (addProductFormGroup.get('product.unitStock').dirty ||  addProductFormGroup.get('product.unitStock').touched)"
+                                class="alert alert-danger mt-1"> 
+                                <div *ngIf="addProductFormGroup.get('product.unitStock').errors.required ||  addProductFormGroup.get('product.unitStock').errors.notOnlyWhitespace">
+                                    Quantity is required
+                                </div>
+                                <div *ngIf=" addProductFormGroup.get('product.unitStock').errors.pattern">
+                                    Quantity must be number  
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <label>Category</label>
+                        <br />
+                        <select class="form-control" formControlName="categorie">
+                            <option value="" disabled selected>Choisir categorie ... </option>
+                            <option *ngFor="let cat of categories" [ngValue]="cat.id">
+                            {{ cat.name }}
+                            </option>
+                        </select>
+                        </div>
+                        <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <div class="custom-file">
+                            <input
+                            formControlName="image"
+                            type="file"
+                            class="custom-file-input"
+                            id="exampleInputFile"
+                            (change)="onChange($event)"
+                            />
+                            <label class="custom-file-label" for="exampleInputFile">choisir votre fichier ..</label>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-success">Ajouter Produit  </button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+</div>

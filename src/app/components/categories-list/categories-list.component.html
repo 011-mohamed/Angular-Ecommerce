@@ -19,13 +19,13 @@
     <section class="content">
       <div class="container-fluid">
         <table class="table table-striped">
-            <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
           <tbody *ngFor="let cat of categories" >
                 <tr>
                     <td>
@@ -41,6 +41,10 @@
                 </tr>
           </tbody>
         </table>
+        <a routerLink="/add-category" class="btn btn-dark btn-lg" style="border-radius: 25px; margin-left: 1150px ;margin-top:2px;"><i class="fas fa-plus"></i></a>
+                          
+      
+        
           <!-- if categories empty then display a message -->
           <div
             *ngIf="categories?.length == 0"
