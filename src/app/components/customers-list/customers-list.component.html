@@ -1,6 +1,6 @@
 <div class="content-wrapper">
-    <!--START CONTENT HEADER -->
-    <section class="content-header">
+  <!--START CONTENT HEADER -->
+  <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
@@ -14,50 +14,80 @@
           </div>
         </div>
       </div>
-    </section>
-    <!--END CONTENT HEADER -->
-    <section class="content">
+  </section>
+  <!--END CONTENT HEADER -->
+  <section class="content">
       <div class="container-fluid">
-        <table class="table table-striped">
-            <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone Number</th>
-            <th>Company</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-          <tbody *ngFor="let customer of customers" >
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Liste des Clients</h3>
+            <div class="card-tools">
+              <div class="input-group input-group-sm" style="width: 150px">
+                <input #myInput
+                  type="text"
+                  name="table_search"
+                  class="form-control float-right"
+                  placeholder="Search"
+                  (keyup.enter)="doSearch(myInput.value)"
+                />
+                <div class="input-group-append">
+                  <button (click)="doSearch(myInput.value)" class="btn btn-default">
+                    <i class="fas fa-search"></i>
+                  </button>
+                  <button (click)="doSortDEC()" class="btn btn-default">
+                    <i class="fas fa-sort-down"></i>
+                  </button>
+                  <button (click)="doSortCR()" class="btn btn-default">
+                    <i class="fas fa-sort-up"></i>
+                  </button>
+                </div>
+                
+              </div>
+  
+            </div>
+          </div>
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+              <thead>
                 <tr>
-                    <td>
-                        {{ customer.firstName}}
-                    </td>
-                    <td>
-                        {{ customer.lastName }}
-                    </td>
-                    <td>
-                        {{ customer.phoneNumber }}
-                    </td>
-                    <td>
-                        {{ customer.company }}
-                    </td>
-                    <td>
-                      <button class="btn btn-success m-2" [routerLink]="['/update-customer',customer.id]" >Edit</button>
-                      <button type="button" (click)="deleteCustomer(customer)" class="btn btn-danger ">Delete</button>
-                    </td>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Phone Number</th>
+                  <th>Company</th>
+                  <th>Actions</th>
                 </tr>
-          </tbody>
-        </table>
-          <!-- if customers empty then display a message -->
-          <div
-            *ngIf="customers?.length == 0"
-            class="alert alert-warning col-md-12"
-            role="alert"
-          >
-            No customers found .
+              </thead>
+              <tbody *ngFor="let customer of customers" >
+                <tr>
+                  <td>
+                    {{ customer.firstName}}
+                  </td>
+                  <td>
+                    {{ customer.lastName }}
+                  </td>
+                  <td>
+                    {{ customer.phoneNumber }}
+                  </td>
+                  <td>
+                    {{ customer.company }}
+                  </td>
+                  <td>
+                    <button class="btn btn-success m-2" [routerLink]="['/update-customer',customer.id]" style="border-radius: 25px;"  >Edit</button>
+                    <button type="button" (click)="deleteCustomer(customer)" class="btn btn-danger " style="border-radius: 25px;" >Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>  
           </div>
         </div>
-    </section>
-  </div>
+          <!-- if customers empty then display a message -->
+        <div
+            *ngIf="customers?.length == 0"
+            class="alert alert-warning col-md-12"
+            role="alert">
+            No customers found .
+        </div>
+      </div>
+  </section>
+</div>
   

@@ -18,34 +18,71 @@
     <!--END CONTENT HEADER -->
     <section class="content">
       <div class="container-fluid">
-        <table class="table table-striped">
-            <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Prix</th>
-            <th>Stock</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-          <tbody *ngFor="let tempProduct of products" >
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Liste des Produits</h3>
+            <div class="card-tools">
+              <div class="input-group input-group-sm" style="width: 150px">
+                <input #myInput
+                  type="text"
+                  name="table_search"
+                  class="form-control float-right"
+                  placeholder="Search"
+                  (keyup.enter)="doSearch(myInput.value)"
+                />
+                <div class="input-group-append">
+                  <button (click)="doSearch(myInput.value)" class="btn btn-default">
+                    <i class="fas fa-search"></i>
+                  </button>
+                  <button (click)="doSortDEC()" class="btn btn-default">
+                    <i class="fas fa-sort-down"></i>
+                  </button>
+                  <button (click)="doSortCR()" class="btn btn-default">
+                    <i class="fas fa-sort-up"></i>
+                  </button>
+                </div>
+                
+              </div>
+  
+            </div>
+          </div>
+          <div class="card-body table-responsive p-0">
+            <table class="table table-hover text-nowrap">
+              <thead>
                 <tr>
-                    <td>
-                        {{ tempProduct.name }}
-                    </td>
-                    <td>
-                      {{ tempProduct.unitPrice }} TND
-                    </td>
-                    <td>
-                      {{ tempProduct.unitStock }}
-                    </td>
-                    <td>
-                      <button type="button"  [routerLink]="['/products',tempProduct.id]" class="btn btn-primary m-2">Details</button>
-                      <button class="btn btn-success " [routerLink]="['/update-product',tempProduct.id]" >Edit</button>
-                      <button type="button"  (click)="deleteProduct(tempProduct)" class="btn btn-danger m-2">Delete</button>
-                    </td>
+                  <th></th>
+                  <th>Nom</th>
+                  <th>Prix</th>
+                  <th>Stock</th>
+                  <th >Actions</th>
                 </tr>
-          </tbody>
-        </table>
+              </thead>
+              <tbody *ngFor="let tempProduct of products" >
+                  <tr>
+                    <td>
+                        <img src="{{tempProduct.image}}" class="img-responsive" width ="80px">
+                    </td>
+                    <td>
+                      <p style="margin-top: 30px;">{{ tempProduct.name }}</p>
+                    </td>
+                    <td>
+                      <p style="margin-top: 30px;">{{ tempProduct.unitPrice }} TND</p>
+                    </td>
+                    <td>
+                      <p style="margin-top: 30px;">{{ tempProduct.unitStock }}</p>
+                    </td>
+                    <td>
+                      <p style="margin-top: 10px;" > </p>
+                      <button type="button"  [routerLink]="['/products',tempProduct.id]" class="btn btn-primary m-2" style="border-radius: 25px;" >Details</button>
+                      <button class="btn btn-success " [routerLink]="['/update-product',tempProduct.id]" style="border-radius: 25px;">Edit</button>
+                      <button type="button"  (click)="deleteProduct(tempProduct)" class="btn btn-danger m-2" style="border-radius: 25px;">Delete</button>
+                    </td>
+                  </tr>
+              </tbody>
+            </table> 
+          </div>
+        </div>
+        
         <a routerLink="/product-add" class="btn btn-dark btn-lg" style="border-radius: 25px; margin-left: 1150px ;margin-top:2px;"><i class="fas fa-plus"></i></a>
         
           <!-- if products empty then display a message -->

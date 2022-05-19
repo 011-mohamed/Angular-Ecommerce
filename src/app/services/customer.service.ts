@@ -30,4 +30,19 @@ export class CustomerService {
     const url = `${this.customerUrl}/filtred/${tel}`;
     return this.httpClient.get<Customer>(url);
   }
+
+  getCustomersByName(keyword: string): Observable<Customer[]>{
+    const url = `${this.customerUrl}/search/${keyword}`;
+    return this.httpClient.get<Customer[]>(url);
+  }
+
+  getCustomersByPhoneNumber(tel: number): Observable<Customer[]>{
+    const url = `${this.customerUrl}/searchByTel/${tel}`;
+    return this.httpClient.get<Customer[]>(url);
+  }
+  
+  getCustomersListSorted(): Observable<Customer[]>{
+    const sortCust=`${this.customerUrl}/orderByDate`
+    return this.httpClient.get<Customer[]>(sortCust);
+  }
 }

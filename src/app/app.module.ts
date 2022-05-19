@@ -25,10 +25,13 @@ import { CustomerUpdateComponent } from './components/customer-update/customer-u
 import { CustomersListComponent } from './components/customers-list/customers-list.component';
 import { BillsListComponent } from './components/bills-list/bills-list.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
+import { NyckelMlComponent } from './components/nyckel-ml/nyckel-ml.component';
+
 
 
 
 const routes: Routes =[
+  { path: 'nyckel-ml', component: NyckelMlComponent },
   { path: 'product-add', component: ProductAddComponent },
   { path: 'bill', component: BillComponent },
   { path: 'ckeckout', component: CheckoutComponent },
@@ -69,6 +72,7 @@ const routes: Routes =[
     CustomersListComponent,
     BillsListComponent,
     ProductAddComponent,
+    NyckelMlComponent,
    
   ],
   imports: [
@@ -77,6 +81,7 @@ const routes: Routes =[
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+   
     
     
   ],

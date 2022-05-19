@@ -30,9 +30,6 @@ export class ProductsListComponent implements OnInit {
     this.route.paramMap.subscribe(()=> {
       this.listProducts();
     });
-
-    
-    
   }
 
   listProducts() {
@@ -116,15 +113,38 @@ export class ProductsListComponent implements OnInit {
         console.log('Product deleted');
         this.SuprimerProduitDuTableau(prod);
       });
-}
+  }
   SuprimerProduitDuTableau(prod : Product) {
     this.products.forEach((cur, index) => {
       if(prod.id=== cur.id) {
         this.products.splice(index, 1);
       }
-});
-}
+  });
+  }
+  doSearch(value: any){
+    console.log(`value+${value}`);
+      this.productService.searchProducts(value).subscribe(
+        data => {
+          this.products = data ;
+        }
+      );
+  }
 
+  doSortDEC(){
+  
+    this.productService.getProductsListSorted().subscribe(
+      data => {
+        this.products = data ;
+      }
+    )
+  }
+  doSortCR(){
+    this.productService.getProductList().subscribe(
+      data => {
+        this.products = data ;
+      }
+    )
+  }
   
   
 

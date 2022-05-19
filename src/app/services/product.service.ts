@@ -71,5 +71,20 @@ export class ProductService {
     return this.httpClient.post(url,formData);
   }
 
+  addProductNyckel(formData: FormData){
+    const url = `https://www.nyckel.com/v1/functions/7aaigszss2ejx7t8/invoke`
+    return this.httpClient.post(url,formData);
+  }
+
+  searchProductNyckel(formData: FormData){
+    const url = `https://www.nyckel.com/v0.9/functions/xp8al1tiuac12kj9/search`
+    return this.httpClient.post(url,formData);
+  }
+
+  getProductsListSorted(): Observable<Product[]>{
+    const sortProd=`${this.baseUrl}/orderByDate`
+    return this.httpClient.get<Product[]>(sortProd);
+  }
+
   
 }
