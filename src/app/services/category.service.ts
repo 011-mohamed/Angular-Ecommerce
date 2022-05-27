@@ -17,9 +17,9 @@ export class CategoryService {
     const url = `${this.categoryUrl}/${id}`;
     return this.httpClient.get<ProductCategory>(url);
   }
-  addCategory(cat: ProductCategory): Observable<ProductCategory> {
-    const url = `${this.categoryUrl}/create/`;
-    return this.httpClient.post<ProductCategory>(url,cat);
+  addCategory(formData: FormData) {
+    const url = `${this.categoryUrl}/create`;
+    return this.httpClient.post(url,formData);
   }
   updateCategory(cat: ProductCategory): Observable<ProductCategory> {
     const url = `${this.categoryUrl}/update/${cat.id}`;

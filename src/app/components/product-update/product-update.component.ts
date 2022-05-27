@@ -17,6 +17,7 @@ export class ProductUpdateComponent implements OnInit {
   categories : ProductCategory[];
   updateFormGroup : FormGroup ;
   idProduct : number ;
+  imageName : string ='';
 
   constructor(private activatedRoute: ActivatedRoute,
     private productService : ProductService,
@@ -49,7 +50,8 @@ export class ProductUpdateComponent implements OnInit {
     
       const file = event.target.files[0];
       this.updateFormGroup.get('updateProduct.image').setValue(file);
-    
+      this.imageName = this.updateFormGroup.get('updateProduct.image').value.name ;
+    console.log(this.updateFormGroup.get('updateProduct.image').value.name);
   }
 
   onSubmit(){

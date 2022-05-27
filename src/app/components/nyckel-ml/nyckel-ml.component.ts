@@ -38,47 +38,26 @@ export class NyckelMlComponent implements OnInit {
     this.srcImg = 'http://127.0.0.1:8000/media/images/'+this.imageName
   
   }
-
-  
-
-
   onSubmit(){
     
     console.log(this.updateFormGroup.get('updateProduct.image').value)
     const formData = new FormData();
     formData.append('image', this.updateFormGroup.get('updateProduct.image').value);
-    this.productService.addProductNyckel(formData).subscribe(
+    /*this.productService.addProductNyckel(formData).subscribe(
       data => this.resultat = {
       labelName: (data as any).labelName,
       labelId:  (data as any).labelId,
       confidence:  (data as any).confidence
-    });
-    
+    });*/
+
+    this.productService.searchProductNyckel(formData).subscribe(
+      data => {
+        console.log('result ='+ JSON.stringify(data)+'***********\n' );
+      }  
+    )
   }
 }
 
 
 
 
-/*
-  function checkImageWithNyckel(image) {
-    var formdata = new FormData();
-    formdata.append("file", image);
-  
-    $.ajax({
-      url: "https://www.nyckel.com/v1/functions/7aaigszss2ejx7t8/invoke",
-      type: "post",
-      data: formdata,
-      contentType: false,
-      processData: false,
-      dataType: "json",
-      success: function (response) {
-        displayResult(response);
-        console.log(response);
-      },
-      error: function (response) {
-        alert("Error checking image", response);
-        $("#title").show();
-        resetPage();
-      }
-    });*/

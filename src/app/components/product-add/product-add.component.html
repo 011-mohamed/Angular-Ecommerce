@@ -119,12 +119,10 @@
                         <label for="exampleInputFile">File input</label>
                         <div class="custom-file">
                             <input
-                            formControlName="image"
                             type="file"
                             class="custom-file-input"
                             id="exampleInputFile"
-                            (change)="onChange($event)"
-                            />
+                            (change)="onChange($event)">
                             <label class="custom-file-label" for="exampleInputFile">{{imageName}}</label>
                         </div>
                         </div>

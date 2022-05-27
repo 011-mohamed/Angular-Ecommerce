@@ -26,6 +26,7 @@ import { CustomersListComponent } from './components/customers-list/customers-li
 import { BillsListComponent } from './components/bills-list/bills-list.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { NyckelMlComponent } from './components/nyckel-ml/nyckel-ml.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 
@@ -73,6 +74,7 @@ const routes: Routes =[
     BillsListComponent,
     ProductAddComponent,
     NyckelMlComponent,
+    DashboardComponent,
    
   ],
   imports: [

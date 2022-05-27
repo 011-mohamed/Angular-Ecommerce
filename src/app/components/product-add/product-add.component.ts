@@ -15,7 +15,8 @@ import { Router } from '@angular/router';
 export class ProductAddComponent implements OnInit {
   addProductFormGroup: FormGroup ;
   categories : ProductCategory[];
-  imageName : string ='select image ...';
+  files: File[] = [];
+  imageName : string ='';
   constructor(private formBuilder:FormBuilder,
               private categoryService : CategoryService,
               private productService : ProductService,
@@ -65,7 +66,8 @@ export class ProductAddComponent implements OnInit {
     const file = event.target.files[0];
     this.addProductFormGroup.get('product.image').setValue(file);
     this.imageName = this.addProductFormGroup.get('product.image').value.name ;
-  
+    console.log(this.addProductFormGroup.get('product.image').value.name);
+    
   }
   onSubmit(){
     console.log(this.addProductFormGroup.get('product.name').value);

@@ -28,30 +28,53 @@
                 </h3>
               </div>
   
-              <form>
-                <div  class="card-body">
+              <form [formGroup]="addCategoryFormGroup" (ngSubmit)="onSubmit()">
+                <div  class="card-body" formGroupName="category">
                   <div class="form-group">
                     <label>Name</label>
                     <input
+                    type="text"
+                    class="form-control"
+                    placeholder="saisir le nom de votre produit ..."
+                    formControlName="name"/>
+                   
+                    <div *ngIf=" addCategoryFormGroup.get('category.name').invalid && (addCategoryFormGroup.get('category.name').dirty ||  addCategoryFormGroup.get('category.name').touched)"
+                      class="alert alert-danger mt-1"> 
+                      <div *ngIf="  addCategoryFormGroup.get('category.name').errors.required ||  addCategoryFormGroup.get('category.name').errors.notOnlyWhitespace">
+                          Name is required
+                      </div>
+                      <div *ngIf=" addCategoryFormGroup.get('category.name').errors.minlength">
+                          Name must be at least 2 characters long
+                      </div>
+                      <div *ngIf=" addCategoryFormGroup.get('category.name').errors.pattern">
+                      Name must be characters only
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                  <label>Description</label>
+                      <input
                       type="text"
                       class="form-control"
-                      placeholder="Enter Category Name ... " />
-                  </div>
-                
-                  <div  class="form-group">
-                    <label >Description</label>
-                    <textarea
-                        class="form-control"
-                        placeholder="Enter Category Description ... "
-                      ></textarea>
-                     
-                  </div>
+                      placeholder="Description de votre produit ..."
+                      formControlName="description"/>
 
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-success" (click)="addCategory()" >
-                     Add Category
-                    </button>
+                    <div *ngIf=" addCategoryFormGroup.get('category.description').invalid && (addCategoryFormGroup.get('category.description').dirty ||  addCategoryFormGroup.get('category.description').touched)"
+                      class="alert alert-danger mt-1"> 
+                      <div *ngIf="  addCategoryFormGroup.get('category.description').errors.required ||  addCategoryFormGroup.get('category.description').errors.notOnlyWhitespace">
+                          description is required
+                      </div>
+                      <div *ngIf=" addCategoryFormGroup.get('category.description').errors.minlength">
+                          description must be at least 2 characters long
+                      </div>
+                      <div *ngIf=" addCategoryFormGroup.get('category.description').errors.pattern">
+                      description must be characters only
+                      </div>
+                    </div>
                   </div>
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-success">Ajouter Categorie  </button>
+                  </div> 
                 </div>
               </form>
             </div>
