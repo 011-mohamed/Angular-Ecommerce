@@ -1,6 +1,6 @@
+import { SearchRes } from "./search-res";
+
 export interface ResponseNyckelSearch {
 
-    sampleId: string ;
-    distance: number ; 
-    externalId: string ;
+    searchSamples: SearchRes[]
 }

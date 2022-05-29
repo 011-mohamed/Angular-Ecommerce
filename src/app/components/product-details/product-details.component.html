@@ -29,9 +29,11 @@
               <div class="col-12">
                 <img src="{{product.image}}" class="product-image" alt="Product Image">
               </div>
-              <div class="col-12 product-image-thumbs">
-                <div class="product-image-thumb active"><img src="{{product.image}}" alt="Product Image"></div>
-                <div class="product-image-thumb" ><img src="{{product.image}}" alt="Product Image"></div>
+              <div  class="col-12 product-image-thumbs">
+                <div *ngFor="let tempImg of images" class="product-image-thumb active">
+                  <img src="{{tempImg.image}}" alt="Product Image">
+                </div>
+                
               </div>
             </div>
             <div class="col-12 col-sm-6">

@@ -1,8 +1,12 @@
+import { SearchRes } from './../../common/search-res';
 import { ResponseNyckelSearch } from './../../common/response-nyckel-search';
 import { ResponseNyckel } from './../../common/response-nyckel';
 import { ProductService } from 'src/app/services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { ImageNyckel } from 'src/app/common/image-nyckel';
+
+
 
 
 @Component({
@@ -16,8 +20,14 @@ export class NyckelMlComponent implements OnInit {
   filePath: string ;
   imageName : string = 'select image ...';
   srcImg : string =''
-  resultat : ResponseNyckel = null   ;
-  resForSearch : any ;
+  resultat : ResponseNyckel   ;
+  resForSearch : any [];
+  res : SearchRes [] ;
+  myImageFromSearchGalery : ImageNyckel ;
+  
+
+  
+
   constructor(private formBuilder: FormBuilder,
               private productService : ProductService ) { }
 
@@ -50,12 +60,58 @@ export class NyckelMlComponent implements OnInit {
       confidence:  (data as any).confidence
     });*/
 
+  }
+
+  searchWithNyckel(){
+
+    const formData = new FormData();
+    formData.append('image', this.updateFormGroup.get('updateProduct.image').value);
+    
     this.productService.searchProductNyckel(formData).subscribe(
       data => {
-        console.log('result ='+ JSON.stringify(data)+'***********\n' );
-      }  
+        this.resForSearch= data
+     
+        this.res = data.searchSamples ;
+        console.log(JSON.stringify(this.resForSearch));
+        
+        console.log('Contents of the resultat :');
+      for(let tempRes of this.res){
+        console.log(
+          `sampleId : ${tempRes.sampleId} , distance : ${tempRes.distance} `
+        )
+        this.productService.getImageOfNyckelSearch(tempRes.sampleId).subscribe(
+          data =>{
+            this.myImageFromSearchGalery = data ;
+            console.log('data of search : ')
+            console.log(this.myImageFromSearchGalery);
+            
+              console.log('--------------- Contents of the resultat --------------- :');
+              console.log(
+                `sampleId : ${this.myImageFromSearchGalery.id} , distance : ${this.myImageFromSearchGalery.data} `
+              )
+            }
+          
+        )
+      }
+      }
     )
+
   }
+
+  classifier(){
+    if(this.resultat && this.resultat.confidence < 0.70){
+
+      return false ;
+    }else{
+      return true ;
+    }
+  }
+
+ /* getImageOfSearch(){
+    if(this.resForSearch){
+      this.productService.getImageOfnyckelSearch(this.resForSearch.sampleId)
+    }
+  }*/
 }
 
 

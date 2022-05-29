@@ -47,7 +47,7 @@ export class CategoriesListComponent implements OnInit {
         if(cat.id=== cur.id) {
           this.categories.splice(index, 1);
         }
-});
+    });
   }
 
     

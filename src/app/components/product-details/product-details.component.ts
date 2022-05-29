@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductService } from './../../services/product.service';
 import { Product } from './../../common/product';
 import { Component, OnInit } from '@angular/core';
+import { ImagesProduct } from 'src/app/common/images-product';
 
 @Component({
   selector: 'app-product-details',
@@ -13,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProductDetailsComponent implements OnInit {
 
   product : Product = new Product () ;
+  images : ImagesProduct[] ;
   constructor(private productService : ProductService,
               private route : ActivatedRoute,
               private cartService : CartService) { }
@@ -21,6 +23,13 @@ export class ProductDetailsComponent implements OnInit {
     this.route.paramMap.subscribe(()=>{
       this.handleProductDetails();
     })
+    const theProductId : number = +this.route.snapshot.paramMap.get('id');
+    this.productService.getImagesProductFiltredById(theProductId).subscribe(
+      data =>{
+        this.images = data 
+        console.log(this.images)
+      }
+    )
   }
 
   handleProductDetails(): void {
@@ -60,6 +69,8 @@ export class ProductDetailsComponent implements OnInit {
       return true ;
     
   }
+  
+
 
   
 
