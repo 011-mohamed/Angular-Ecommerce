@@ -32,6 +32,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 const routes: Routes =[
+  { path: 'dashboard', component: DashboardComponent },
   { path: 'nyckel-ml', component: NyckelMlComponent },
   { path: 'product-add', component: ProductAddComponent },
   { path: 'bill', component: BillComponent },

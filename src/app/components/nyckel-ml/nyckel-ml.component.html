@@ -31,34 +31,40 @@
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-success m-2">Classifier</button>
-                            <button class="btn btn-danger" (click)="searchWithNyckel()" >Chercher</button>
+                            
                         </div>
                     </form>
+                    <div class="text-center">
+                        <button class="btn btn-danger" (click)="searchWithNyckel()" >Chercher</button>
+                    </div>
                 </div>
-                <div class="col-md-2" *ngIf="srcImg">
+                <div class="col-md-4" *ngIf="srcImg">
                     <div class="col-12 product-image-thumbs">
                         <div class="product-image-thumb active"><img src="{{srcImg}}" alt="Product Image"></div>
                     </div>
                     <div *ngIf="resultat && classifier()">
                         <h5> Categorie : {{resultat.labelName}}</h5>
-                        
-                    </div>
-                    <div *ngIf="resForSearch">
-                        <div *ngFor="let tempRes of res" >
-                            <h5> sampleid : {{tempRes.sampleId}}</h5>
-                            <h5> distance : {{tempRes.distance}}</h5>
-                            <a routerLink="/product-add" class="btn btn-success btn-sm">ajouter un produit</a> 
-                        </div>
-                        <div *ngIf="myImageFromSearchGalery" >
-                            <div class="col-12 product-image-thumbs">
-                                <div class="product-image-thumb active"><img src="{{myImageFromSearchGalery.data}}" alt="Product Image"></div>
-                            </div>
-                        </div>
-
-                       
                     </div>
                     <div *ngIf="!classifier()">
                         <h5>ce categorie n'existe pas </h5>
+                    </div>
+                    <div *ngIf="res">
+                        <div *ngIf="!productExist()">
+                            <h5>Produit n'existe pas</h5>
+                            <a routerLink="/product-add" class="btn btn-success btn-sm">ajouter ce produit</a> 
+                        </div>
+                        <div *ngIf="productExist()">
+                            <div *ngFor="let tempRes of res" >
+                                <h5> sampleid : {{tempRes.sampleId}}</h5>
+                                <h5> distance : {{tempRes.distance}}</h5>
+                            </div>
+                            <div *ngIf="myImageFromSearchGalery" >
+                                <div class="col-12 product-image-thumbs">
+                                    <div class="product-image-thumb active"><img src="{{myImageFromSearchGalery.data}}" alt="Product Image"></div>
+                                </div>
+                            </div>
+                            <a routerLink="/products-list" class="btn btn-success btn-sm">Ce Produit exist modifier la quantité</a> 
+                        </div>
                     </div>
                 </div>
             </div>

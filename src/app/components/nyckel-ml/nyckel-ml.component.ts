@@ -53,12 +53,12 @@ export class NyckelMlComponent implements OnInit {
     console.log(this.updateFormGroup.get('updateProduct.image').value)
     const formData = new FormData();
     formData.append('image', this.updateFormGroup.get('updateProduct.image').value);
-    /*this.productService.addProductNyckel(formData).subscribe(
+    this.productService.addProductNyckel(formData).subscribe(
       data => this.resultat = {
       labelName: (data as any).labelName,
       labelId:  (data as any).labelId,
       confidence:  (data as any).confidence
-    });*/
+    });
 
   }
 
@@ -87,7 +87,7 @@ export class NyckelMlComponent implements OnInit {
             
               console.log('--------------- Contents of the resultat --------------- :');
               console.log(
-                `sampleId : ${this.myImageFromSearchGalery.id} , distance : ${this.myImageFromSearchGalery.data} `
+                `id  : ${this.myImageFromSearchGalery.id} , data : ${this.myImageFromSearchGalery.data} `
               )
             }
           
@@ -107,11 +107,18 @@ export class NyckelMlComponent implements OnInit {
     }
   }
 
- /* getImageOfSearch(){
-    if(this.resForSearch){
-      this.productService.getImageOfnyckelSearch(this.resForSearch.sampleId)
+  productExist(){
+    if(this.res){
+      for(let tempRes of this.res){
+        if(tempRes.distance > 0.30){
+          return false ;
+        }else{
+          return true ;
+        }
+      }
+      
     }
-  }*/
+  }
 }
 
 
