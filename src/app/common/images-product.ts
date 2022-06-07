@@ -3,4 +3,5 @@ export class ImagesProduct {
 
     image : string;
     product : Product;
+    refe : string ;
 }

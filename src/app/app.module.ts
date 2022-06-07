@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { Routes,RouterModule } from '@angular/router';
+import { AgChartsAngularModule } from 'ag-charts-angular';
+
 
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { SearchComponent } from './components/search/search.component';
@@ -84,6 +86,8 @@ const routes: Routes =[
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
+    AgChartsAngularModule,
+    
    
     
     

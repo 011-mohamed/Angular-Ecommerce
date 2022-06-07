@@ -22,8 +22,8 @@
         <div class="col-lg-3 col-6">
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>{{BillsCount}}</h3>
-              <p> Commandes</p>
+              <h3>{{ BillsCount }}</h3>
+              <p>Commandes</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -37,7 +37,7 @@
         <div class="col-lg-3 col-6">
           <div class="small-box bg-success">
             <div class="inner">
-              <h3>{{productCount}}</h3>
+              <h3>{{ productCount }}</h3>
               <p>Produits</p>
             </div>
             <div class="icon">
@@ -52,7 +52,7 @@
         <div class="col-lg-3 col-6">
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>{{customersCount}}</h3>
+              <h3>{{ customersCount }}</h3>
               <p>Clients</p>
             </div>
             <div class="icon">
@@ -67,7 +67,7 @@
         <div class="col-lg-3 col-6">
           <div class="small-box bg-danger">
             <div class="inner">
-              <h3>{{categoryCount}}</h3>
+              <h3>{{ categoryCount }}</h3>
               <p>Categories</p>
             </div>
             <div class="icon">
@@ -78,6 +78,50 @@
             ></a>
           </div>
         </div>
+      </div>
+      <div *ngIf="data" class="row">
+        <section class="col-lg-7 connectedSortable">
+          <ag-charts-angular style="height: 100%" [options]="options">
+          </ag-charts-angular>
+        </section>
+        <section class="col-lg-5 connectedSortable">
+          <div class="card bg-gradient-success">
+          <div class="card-header border-0">
+            <h3 class="card-title">
+              <i class="far fa-calendar-alt"></i>
+              Calendar
+            </h3>
+
+            <div class="card-tools">
+              <div class="btn-group">
+                                
+              </div>
+              <button
+                type="button"
+                class="btn btn-success btn-sm"
+                data-card-widget="collapse"
+              >
+                <i class="fas fa-minus"></i>
+              </button>
+              <button
+                type="button"
+                class="btn btn-success btn-sm"
+                data-card-widget="remove"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="card-body pt-0">
+            <div id="calendar" style="width: 100%">
+              
+            </div>
+            
+          </div>
+        </div>
+        </section>
+        
       </div>
     </div>
   </section>

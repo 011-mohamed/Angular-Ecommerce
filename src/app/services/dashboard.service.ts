@@ -1,3 +1,4 @@
+import { Statistic } from './../common/statistic';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -30,5 +31,10 @@ export class DashboardService {
   getBillsCount(){
     const billsUrl = `${this.baseUrlDashboard}/bills/billsCount`
     return this.httpClient.get<any>(billsUrl);
+  }
+
+  getSumOfSalesPerMonth(){
+    const sumUrl = `http://127.0.0.1:8000/api/bills/sumPerMonth`
+    return this.httpClient.get<Statistic[]>(sumUrl);
   }
 }

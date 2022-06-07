@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { SearchRes } from './../../common/search-res';
 import { ResponseNyckelSearch } from './../../common/response-nyckel-search';
 import { ResponseNyckel } from './../../common/response-nyckel';
@@ -29,7 +30,8 @@ export class NyckelMlComponent implements OnInit {
   
 
   constructor(private formBuilder: FormBuilder,
-              private productService : ProductService ) { }
+              private productService : ProductService,
+              private router : Router ) { }
 
   ngOnInit(): void {
     this.updateFormGroup = this.formBuilder.group({
@@ -89,8 +91,31 @@ export class NyckelMlComponent implements OnInit {
               console.log(
                 `id  : ${this.myImageFromSearchGalery.id} , data : ${this.myImageFromSearchGalery.data} `
               )
+              if(this.myImageFromSearchGalery){
+                this.productService.getProductByRef(this.myImageFromSearchGalery.id).subscribe(
+                  data => {
+                    const p = data 
+                    console.log('the product after search by Reference :')
+                    console.log(p);
+                    this.router.navigateByUrl("update-product/"+p.id);
+                  }
+                )
+                
+                this.productService.getProductFromImagesByRef(this.myImageFromSearchGalery.id).subscribe(
+                  data => {
+                    const pd = data 
+                    console.log('the product after search by Reference :')
+                    console.log(pd);
+                    for(let i of pd){
+                      console.log(i.product.id);
+                      this.router.navigateByUrl("update-product/"+i.product.id);
+                    }
+                    
+                  }
+                )
+              }   
             }
-          
+            
         )
       }
       }

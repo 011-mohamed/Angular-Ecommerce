@@ -3,12 +3,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>image recognition ML</h1>
+              <h1>Chercher Mon Produit</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Nyckel</li>
+                <li class="breadcrumb-item active">ML</li>
               </ol>
             </div>
           </div>
@@ -54,16 +54,12 @@
                             <a routerLink="/product-add" class="btn btn-success btn-sm">ajouter ce produit</a> 
                         </div>
                         <div *ngIf="productExist()">
-                            <div *ngFor="let tempRes of res" >
-                                <h5> sampleid : {{tempRes.sampleId}}</h5>
-                                <h5> distance : {{tempRes.distance}}</h5>
-                            </div>
+                                <h2>Ce Produit exist modifier la quantité</h2>
                             <div *ngIf="myImageFromSearchGalery" >
                                 <div class="col-12 product-image-thumbs">
                                     <div class="product-image-thumb active"><img src="{{myImageFromSearchGalery.data}}" alt="Product Image"></div>
                                 </div>
                             </div>
-                            <a routerLink="/products-list" class="btn btn-success btn-sm">Ce Produit exist modifier la quantité</a> 
                         </div>
                     </div>
                 </div>
