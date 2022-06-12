@@ -4,12 +4,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Products</h1>
+            <h1>Produits</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Products</li>
+              <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+              <li class="breadcrumb-item active">Produits</li>
             </ol>
           </div>
         </div>
@@ -74,8 +74,8 @@
                     <td>
                       <p style="margin-top: 10px;" > </p>
                       <button type="button"  [routerLink]="['/products',tempProduct.id]" class="btn btn-primary m-2" style="border-radius: 25px;" >Details</button>
-                      <button class="btn btn-success " [routerLink]="['/update-product',tempProduct.id]" style="border-radius: 25px;">Edit</button>
-                      <button type="button"  (click)="deleteProduct(tempProduct)" class="btn btn-danger m-2" style="border-radius: 25px;">Delete</button>
+                      <button class="btn btn-success " [routerLink]="['/update-product',tempProduct.id]" style="border-radius: 25px;">Modifier</button>
+                      <button type="button"  (click)="deleteProduct(tempProduct)" class="btn btn-danger m-2" style="border-radius: 25px;">Supprimer</button>
                     </td>
                   </tr>
               </tbody>

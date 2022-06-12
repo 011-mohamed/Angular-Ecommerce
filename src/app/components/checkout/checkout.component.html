@@ -4,12 +4,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Checkout</h1>
+          <h1>ajouter Client</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Ckeckout</li>
+            <li class="breadcrumb-item active">Ajouter-Client</li>
           </ol>
         </div>
       </div>
@@ -28,7 +28,7 @@
             <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
               <div formGroupName="customer" class="card-body">
                 <div class="form-group">
-                  <label>First Name</label>
+                  <label>Nom</label>
                   <input
                     type="text"
                     formControlName="firstName"
@@ -39,19 +39,19 @@
                     *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
                     class="alert alert-danger mt-1">  
                     <div *ngIf=" firstName.errors.required || firstName.errors.notOnlyWhitespace">
-                      First Name is required
+                      ce champ est obligatoire
                     </div>
                     <div *ngIf="firstName.errors.minlength">
-                      First Name must be at least 2 characters long
+                      Le nom doit comporter au moins 2 caractères
                     </div>
                     <div *ngIf="firstName.errors.pattern">
-                      First Name must be characters only
+                      Le nom ne doit contenir que des caractères
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="lastName">Last Name</label>
+                  <label for="lastName">Prenom</label>
                   <input
                     type="text"
                     formControlName="lastName"
@@ -70,18 +70,18 @@
                         lastName.errors.notOnlyWhitespace
                       "
                     >
-                      Last Name is required
+                    ce champ est obligatoire
                     </div>
                     <div *ngIf="lastName.errors.minlength">
-                      Last Name must be at least 2 characters long
+                      Le Prenom doit comporter au moins 2 caractères
                     </div>
                     <div *ngIf="lastName.errors.pattern">
-                      Last Name must be characters only
+                      Le Prenom ne doit contenir que des caractères
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="phoneNumber">Phone Nmber</label>
+                  <label for="phoneNumber">Numero de tel </label>
                   <input
                     type="text"
                     formControlName="phoneNumber"
@@ -101,20 +101,20 @@
                         phoneNumber.errors.notOnlyWhitespace
                       "
                     >
-                      Phone Number is required
+                      ce champ est obligatoire *
                     </div>
                     <div *ngIf="phoneNumber.errors.pattern">
-                      must be 8 number Long
+                      doit être long de 8 chiffres
                     </div>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="company">Company</label>
+                  <label for="company">Entreprise</label>
                   <input
                     type="text"
                     formControlName="company"
                     class="form-control"
-                    placeholder="Enter the company name ..."
+                    placeholder="Saisie le nom de entreprise ..."
                   />
                   <div
                     *ngIf="
@@ -128,16 +128,16 @@
                         company.errors.notOnlyWhitespace
                       "
                     >
-                      Company is required
+                      ce champ est obligatoire
                     </div>
                     <div *ngIf="company.errors.minlength">
-                      company Name must be at least 2 characters long
+                      entreprise doit comporter au moins 2 caractères
                     </div>
                   </div>
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-success">
-                    Generate Invoice
+                    Générer une facture
                   </button>
                 </div>
               </div>
@@ -162,12 +162,12 @@
             </div>
             <span
               style=" font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,sans-serif; font-weight: bold;">
-              Total Quantity : {{ totalQuantity }}
+              Total Quantité : {{ totalQuantity }}
             </span>
             <br />
             <span
               style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial,sans-serif;font-weight: bold;">
-              Total Price : {{ totalPrice | currency: "TND" }} </span
+              Total Prix : {{ totalPrice | currency: "TND" }} </span
             ><br />
           </div>
         </div>

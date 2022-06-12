@@ -8,7 +8,7 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Accueil</a></li>
               <li class="breadcrumb-item active">Clients</li>
             </ol>
           </div>
@@ -50,10 +50,10 @@
             <table class="table table-hover text-nowrap">
               <thead>
                 <tr>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Phone Number</th>
-                  <th>Company</th>
+                  <th>Nom</th>
+                  <th>Prenom</th>
+                  <th>Numero de tel</th>
+                  <th>Entreprise</th>
                   <th>Actions</th>
                 </tr>
               </thead>
@@ -72,8 +72,8 @@
                     {{ customer.company }}
                   </td>
                   <td>
-                    <button class="btn btn-success m-2" [routerLink]="['/update-customer',customer.id]" style="border-radius: 25px;"  >Edit</button>
-                    <button type="button" (click)="deleteCustomer(customer)" class="btn btn-danger " style="border-radius: 25px;" >Delete</button>
+                    <button class="btn btn-success m-2" [routerLink]="['/update-customer',customer.id]" style="border-radius: 25px;"  >Modfier</button>
+                    <button type="button" (click)="deleteCustomer(customer)" class="btn btn-danger " style="border-radius: 25px;" >Supprimer</button>
                   </td>
                 </tr>
               </tbody>

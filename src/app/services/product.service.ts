@@ -106,7 +106,7 @@ export class ProductService {
   getImageOfNyckelSearch(sampleId : string):Observable<ImageNyckel>{
     const url = `https://www.nyckel.com/v1/functions/1wx5f24y974e1ntc/samples/${sampleId}`
     const headers= new HttpHeaders()
-      .set('Authorization', 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE2NTQ1Njc0NTcsImV4cCI6MTY1NDU3MTA1NywiaXNzIjoiaHR0cHM6Ly93d3cubnlja2VsLmNvbSIsImNsaWVudF9pZCI6ImFycHF1aGV4MXppczIwbnl4ZTk0ZGR4a2ViczRjemthIiwianRpIjoiN0NGQzkxRDNBMEVEQTY5NjY2MkFBNjM0N0ZDMTk3NTkiLCJpYXQiOjE2NTQ1Njc0NTcsInNjb3BlIjpbImFwaSJdfQ.CAZO22j2SBEh3sEY7MawvQwl7uVnDAO4FCQdjaefLYZ3I7VFZvsrqH8O7yUfz8Qvp9h6zXSG8FDjCXKp9zh6T81bbcc3RCJVTFN7N97Tz22mk2AqAIvIQUhqQ8k_Ti9v7qKyqU8HFF9Q858lOcPHTW75ZsYPBLc4Y_K9ECUqAas_xQNQiVAv7GUku03L7aO9dZMOh0SJebk2q4b5ib8jKmdsDTYGQKJIirB8x3lAbrxCCPwjfhBgK6KnljRrDJxXhijEBnfpMp1NVCjHZ8D18sm5jfP-UXyxOh3_x5JXp73FBjRLx9M1hVqaT_rxhtGjRqiiK4-reF1xQni0jCv3bQ')  
+      .set('Authorization', 'Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6ImF0K2p3dCJ9.eyJuYmYiOjE2NTQ5NjU2OTAsImV4cCI6MTY1NDk2OTI5MCwiaXNzIjoiaHR0cHM6Ly93d3cubnlja2VsLmNvbSIsImNsaWVudF9pZCI6ImFycHF1aGV4MXppczIwbnl4ZTk0ZGR4a2ViczRjemthIiwianRpIjoiRkI4NjU3MDI1MkRBOUI1QjJCNzcyNTFEQTJDRTAwRDYiLCJpYXQiOjE2NTQ5NjU2OTAsInNjb3BlIjpbImFwaSJdfQ.mNZMSNGiaOouJXhQMFmLXMbGqCjsOFiJUIOt1N3JAD0spe0pHxdB6IrYv7OXnUlxXxShiKU6EtKHRrYDcPYsi72et4SiXSqn_oLSQBHxz5StsDUzAjDfOFtxlkLViVj4aMI_UT4S3UJHjZ8dAO4nq6b1fHYJfzHZhJDdfH_tTUoeZhuj_t5sC1U5NKtvs6CUh_k2oKAoENHP7rmhgroruG2esRMc2yU0xcxHnv2Tq-LrxMANdbGZ5Tj_ga0VJjJCOd8nXb5JecYd9PZMU_M_F5NRrv2cgVviV8SQG7zOsW8vq8T8u2aQJmOEmOOPHzPw39Le9-N-nkD4h5K6KidkBw')  
       
     return this.httpClient.get<ImageNyckel>(url,{'headers':headers}); 
   } 
@@ -120,6 +120,8 @@ export class ProductService {
     const url = `http://127.0.0.1:8000/api/imagesProduct/findByReference/${ref}`
     return this.httpClient.get<ImagesProduct[]>(url)  ;
   }
+
+ 
   
 }
 

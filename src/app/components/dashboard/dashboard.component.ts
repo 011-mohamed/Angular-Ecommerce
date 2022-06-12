@@ -1,3 +1,5 @@
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/common/product';
 import { VentePerMois } from './../../common/vente-per-mois';
 import { Statistic } from './../../common/statistic';
 import { Component, OnInit } from '@angular/core';
@@ -23,6 +25,7 @@ export class DashboardComponent implements OnInit {
   statistic : Statistic [] ;
   ventePerMois : VentePerMois [] =[]   ;
   dt : any
+  productsQt : Product[] = [] ;
   
 
   janvier : string = 'Janvier';
@@ -95,6 +98,12 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
 
+    this.dashBoardService.getProductWithLowQty().subscribe(
+      data => {
+        this.productsQt = data ;
+      }
+    )
+
     this.dashBoardService.getBillsCount().subscribe(
       data =>{
         this.BillsCount = data.count 
@@ -135,6 +144,9 @@ export class DashboardComponent implements OnInit {
         
       }
     )
+
+  
+
 
 
     
@@ -316,6 +328,7 @@ export class DashboardComponent implements OnInit {
       break;
     }
   }
+
 
 
   

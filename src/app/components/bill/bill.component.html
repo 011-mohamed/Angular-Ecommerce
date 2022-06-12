@@ -4,12 +4,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Invoice</h1>
+          <h1>Facture</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item active">Invoice</li>
+            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+            <li class="breadcrumb-item active">Facture</li>
           </ol>
         </div>
       </div>
@@ -32,12 +32,12 @@
 
             <div class="row invoice-info">
               <div class="col-sm-4 invoice-col">
-                From
+                De
                 <address>
                   <strong>Admin, Inc.</strong><br />
                   [ADRESSE DE SOCIETE]<br />
 
-                  Phone:[NUM DE TEL]<br />
+                  Telephone :[NUM DE TEL]<br />
                   Email:
                   <a
                     href="/cdn-cgi/l/email-protection"
@@ -49,13 +49,13 @@
               </div>
 
               <div class="col-sm-4 invoice-col">
-                To
+                à
                 <address>
                   <strong
                     >{{ customer.firstName }} {{ customer.lastName }}</strong
                   ><br />
-                  Phone: {{ customer.phoneNumber }}<br />
-                  COMPANY :
+                  Telephone: {{ customer.phoneNumber }}<br />
+                  Entreprise :
                   <a
                     href="/cdn-cgi/l/email-protection"
                     class="__cf_email__"
@@ -66,9 +66,9 @@
               </div>
 
               <div class="col-sm-4 invoice-col">
-                <b>Invoice #{{ idBill }}</b>
+                <b>Facture #{{ idBill }}</b>
                 <br />
-                <b>Order Tracking Number #{{ orderID }}</b>
+                <b>Numéro de suivi de commande #{{ orderID }}</b>
                 <br />
               </div>
             </div>
@@ -78,9 +78,9 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                      <th>Qty</th>
-                      <th>Product</th>
-                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Produit</th>
+                      <th>Prix</th>
                       <th>Subtotal</th>
                     </tr>
                   </thead>
@@ -121,10 +121,10 @@
                     rel="noopener"
                     target="_blank"
                     class="btn btn-default"
-                  ><i class="fas fa-print"></i> Print</button
+                  ><i class="fas fa-print"></i> Imprimer</button
                 >
                 <button type="submit" (click)="onSubmit()" class="btn btn-success float-right" >
-                  <i class="far fa-credit-card"></i> SAVE
+                  <i class="far fa-credit-card"></i> Eneregistrer
                 </button>
               </div>
             </div>

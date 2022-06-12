@@ -8,7 +8,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Accueil</a></li>
             <li class="breadcrumb-item active">Ajouter-Produit</li>
           </ol>
         </div>
@@ -37,15 +37,15 @@
                                 formControlName="name"/>
                                
                             <div *ngIf=" addProductFormGroup.get('product.name').invalid && (addProductFormGroup.get('product.name').dirty ||  addProductFormGroup.get('product.name').touched)"
-                                class="alert alert-danger mt-1"> 
+                                class="alert alert-danger mt-1-"> 
                                 <div *ngIf="  addProductFormGroup.get('product.name').errors.required ||  addProductFormGroup.get('product.name').errors.notOnlyWhitespace">
-                                    Name is required
+                                    ce champ est obligatoire
                                 </div>
                                 <div *ngIf=" addProductFormGroup.get('product.name').errors.minlength">
-                                    Name must be at least 2 characters long
+                                    Le nom doit comporter au moins 2 caractères
                                 </div>
                                 <div *ngIf=" addProductFormGroup.get('product.name').errors.pattern">
-                                Name must be characters only
+                                    Le nom ne doit contenir que des caractères
                                 </div>
                             </div>
                         </div>
@@ -59,13 +59,13 @@
                             <div *ngIf=" addProductFormGroup.get('product.description').invalid && (addProductFormGroup.get('product.description').dirty ||  addProductFormGroup.get('product.description').touched)"
                                 class="alert alert-danger mt-1"> 
                                 <div *ngIf="  addProductFormGroup.get('product.description').errors.required ||  addProductFormGroup.get('product.description').errors.notOnlyWhitespace">
-                                    description is required
+                                    ce champ est obligatoire
                                 </div>
                                 <div *ngIf=" addProductFormGroup.get('product.description').errors.minlength">
-                                    description must be at least 2 characters long
+                                    description doit comporter au moins 2 caractères
                                 </div>
                                 <div *ngIf=" addProductFormGroup.get('product.description').errors.pattern">
-                                description must be characters only
+                                    description doit contenir que des caractères
                                 </div>
                             </div>
                         </div>
@@ -80,10 +80,10 @@
                             <div *ngIf=" addProductFormGroup.get('product.unitPrice').invalid && (addProductFormGroup.get('product.unitPrice').dirty ||  addProductFormGroup.get('product.unitPrice').touched)"
                                 class="alert alert-danger mt-1"> 
                                 <div *ngIf="addProductFormGroup.get('product.unitPrice').errors.required ||  addProductFormGroup.get('product.unitPrice').errors.notOnlyWhitespace">
-                                    Price is required
+                                    ce champ est obligatoire
                                 </div>
                                 <div *ngIf=" addProductFormGroup.get('product.unitPrice').errors.pattern">
-                                    Price must be 1 digit befor the point and  3 digits after point !
+                                    Le prix doit être 1 chiffre avant le point et 3 chiffres après le point !
                                 </div>
                             </div>
                         </div>
@@ -98,10 +98,10 @@
                             <div *ngIf=" addProductFormGroup.get('product.unitStock').invalid && (addProductFormGroup.get('product.unitStock').dirty ||  addProductFormGroup.get('product.unitStock').touched)"
                                 class="alert alert-danger mt-1"> 
                                 <div *ngIf="addProductFormGroup.get('product.unitStock').errors.required ||  addProductFormGroup.get('product.unitStock').errors.notOnlyWhitespace">
-                                    Quantity is required
+                                    ce champ est obligatoire
                                 </div>
                                 <div *ngIf=" addProductFormGroup.get('product.unitStock').errors.pattern">
-                                    Quantity must be number  
+                                    La quantité doit être un nombre  
                                 </div>
                             </div>
                         </div>
@@ -116,7 +116,7 @@
                         </select>
                         </div>
                         <div class="form-group">
-                        <label for="exampleInputFile">File input</label>
+                        <label for="exampleInputFile">Image</label>
                         <div class="custom-file">
                             <input
                             type="file"

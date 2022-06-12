@@ -4,12 +4,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Add Category</h1>
+            <h1>Ajouter Categorie</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Categories</li>
+              <li class="breadcrumb-item"><a href="#">Accueil</a></li>
+              <li class="breadcrumb-item active">Ajouter-Categorie</li>
             </ol>
           </div>
         </div>
@@ -24,14 +24,14 @@
             <div class="card card-success align-content-center">
               <div class="card-header">
                 <h3 class="card-title">
-                  Add <small>Category</small>
+                  Ajouter <small>Categorie</small>
                 </h3>
               </div>
   
               <form [formGroup]="addCategoryFormGroup" (ngSubmit)="onSubmit()">
                 <div  class="card-body" formGroupName="category">
                   <div class="form-group">
-                    <label>Name</label>
+                    <label>Nom</label>
                     <input
                     type="text"
                     class="form-control"
@@ -41,13 +41,13 @@
                     <div *ngIf=" addCategoryFormGroup.get('category.name').invalid && (addCategoryFormGroup.get('category.name').dirty ||  addCategoryFormGroup.get('category.name').touched)"
                       class="alert alert-danger mt-1"> 
                       <div *ngIf="  addCategoryFormGroup.get('category.name').errors.required ||  addCategoryFormGroup.get('category.name').errors.notOnlyWhitespace">
-                          Name is required
+                        ce champ est obligatoire
                       </div>
                       <div *ngIf=" addCategoryFormGroup.get('category.name').errors.minlength">
-                          Name must be at least 2 characters long
+                        Le nom doit comporter au moins 2 caractères
                       </div>
                       <div *ngIf=" addCategoryFormGroup.get('category.name').errors.pattern">
-                      Name must be characters only
+                        Le nom ne doit contenir que des caractères
                       </div>
                     </div>
                   </div>
@@ -68,7 +68,7 @@
                           description must be at least 2 characters long
                       </div>
                       <div *ngIf=" addCategoryFormGroup.get('category.description').errors.pattern">
-                      description must be characters only
+                        description  ne doit contenir que des caractères
                       </div>
                     </div>
                   </div>

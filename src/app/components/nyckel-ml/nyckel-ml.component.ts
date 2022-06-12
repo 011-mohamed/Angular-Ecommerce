@@ -135,7 +135,7 @@ export class NyckelMlComponent implements OnInit {
   productExist(){
     if(this.res){
       for(let tempRes of this.res){
-        if(tempRes.distance > 0.30){
+        if(tempRes.distance > 0.10){
           return false ;
         }else{
           return true ;
